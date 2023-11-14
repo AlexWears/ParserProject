@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pip install -r requirements.txt
+antlr4 -v 4.13.0 -o "generated_classes" -Dlanguage=Python3 python.g4
+echo "done"

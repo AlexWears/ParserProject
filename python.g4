@@ -1,48 +1,109 @@
 grammar python;
-s   : VAR s EOF
-    |
-    ;
+s               : branch s
+                | var s
+                | EOF
+                ;
 
-LITERAL : STRING
-        | CHAR
-        | NUMBER
-        | BOOL
-        ;
+IF              : 'if'
+                ;
 
-VAR : (LETTER) (LETTER|NUMBER|'_')* WS* (ASSIGN | OPERATION | '\n'*)
-    ;
+ELIF            : 'elif'
+                ;
 
-ASSIGN : OPSYMBOL? '=' ((WS* (VAR | LITERAL | OPERATION | ARRAY) ASSIGN?)) '\n'*
-       ;
+ELSE            : 'else'
+                ;
 
-OPSYMBOL : ('*' | '/' | '+' | '-' | '%')
-         ;
+NOT             : 'not'
+                ;
 
-OPERATION: (LITERAL | VAR) WS* OPSYMBOL '='? WS* (LITERAL | VAR);
+AND             : 'and'
+                ;
 
-INT : '0'..'9'+
-    ;
+OR              : 'or'
+                ;
 
-NUMBER : INT '.'? INT*
-       ;
+BOOL            : 'True'
+                | 'False'
+                ;
 
-LETTER : LOWERCASE
-       | UPPERCASE;
+ID              : (LETTER) (LETTER|NUMBER|US)*
+                ;
 
-STRING : '"' (LETTER|NUMBER|WS)* '"';
+LITERAL         : STRING
+                | CHAR
+                | NUMBER
+                | BOOL
+                ;
 
-CHAR : '\'' LETTER '\'';
+INT             : '0'..'9'+
+                ;
 
-BOOL : 'True'
-     | 'False'
-     ;
+NUMBER          : '-'? INT '.'? INT?
+                ;
 
-LOWERCASE : 'a'..'z';
+LETTER          : LOWERCASE
+                | UPPERCASE
+                ;
 
-UPPERCASE : 'A'..'Z';
+STRING          : '"' (LETTER|NUMBER|WS)* '"'
+                ;
 
-ARRAY : '[' WS* (LITERAL (WS* ',' WS* LITERAL)*) WS* ']'
-      ;
+CHAR            : '\'' LETTER '\''
+                ;
 
-WS  : ('\t'|' ')+;
+LOWERCASE       : 'a'..'z'
+                ;
+
+UPPERCASE       : 'A'..'Z'
+                ;
+
+ARRAY           : '[' WS* (LITERAL (WS* ',' WS* LITERAL)*) WS* ']'
+                ;
+
+OPSYMBOL        : ('*' | '/' | '+' | '-' | '%')
+                ;
+
+WS              : ('\t'|' ')+
+                ;
+
+NL              : '\r\n'
+                ;
+
+US              : ('_')
+                ;
+
+LPAREN          : '('
+                ;
+
+RPAREN          : ')'
+                ;
+
+COLON           : ':'
+                ;
+
+COMPAREOP       : '=='
+                | '!='
+                | '<'
+                | '>'
+                | '<='
+                | '>='
+                ;
+
+branch          : (((IF|ELIF) WS* comparison) | ELSE) COLON NL branchstatement+ branch?
+                ;
+
+var             : ID WS* (assign | operation)? NL*
+                ;
+
+comparison      : ((LPAREN comparison RPAREN) | ('not'* WS* (var | LITERAL | BOOL))) WS* ((COMPAREOP comparison) | (AND|OR) WS* comparison WS*)?
+                ;
+
+branchstatement : '\t' (var | branch | NL*)
+                ;
+
+assign          : OPSYMBOL? '=' WS* (var | LITERAL | operation | ARRAY | BOOL) assign? NL*
+                ;
+
+operation       : (LITERAL | var) (WS* OPSYMBOL '='? WS* (LITERAL | var))*
+                ;
 

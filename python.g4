@@ -1,7 +1,5 @@
 grammar python;
-s               : branch s
-                | var s
-                | EOF
+s               : (branch | var)* EOF
                 ;
 
 IF              : 'if'

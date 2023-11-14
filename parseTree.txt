@@ -5,340 +5,291 @@
          assign =   "20" \r\n {
          }
       }
-      s {
-         var assign2 {
-            assign =   123 \r\n {
+      var assign2 {
+         assign =   123 \r\n {
+         }
+      }
+      var assign3 {
+         assign =   1.23 \r\n {
+         }
+      }
+      var assign4 {
+         assign = {
+            var assign1 \r\n \r\n {
             }
          }
-         s {
-            var assign3 {
-               assign =   1.23 \r\n {
+      }
+      var arith_op1 {
+         assign = {
+            operation 1   +   2 {
+            }
+         \r\n {
+         }
+      }
+      var arith_op2 {
+         assign = {
+            operation 13   -   3 {
+            }
+         \r\n {
+         }
+      }
+      var arith_op3 {
+         assign = {
+            operation 10   / {
+               var arith_op1 \r\n {
                }
             }
-            s {
-               var assign4 {
-                  assign = {
-                     var assign1 \r\n \r\n {
+         }
+      }
+      var arith_op4 {
+         assign = {
+            operation 4.2   *   10 {
+            }
+         \r\n {
+         }
+      }
+      var arith_op5 {
+         assign = {
+            operation {
+               var arith_op1 {
+               }
+            % {
+               var arith_op2 \r\n \r\n {
+               }
+            }
+         }
+      }
+      var arith_op1 {
+         assign + = {
+            var arith_op2 \r\n {
+            }
+         }
+      }
+      var arith_op2 {
+         assign - = {
+            var arith_op3 \r\n {
+            }
+         }
+      }
+      var arith_op3 {
+         assign * = {
+            var arith_op4 \r\n {
+            }
+         }
+      }
+      var arith_op4 {
+         assign / = {
+            var arith_op5 \r\n \r\n {
+            }
+         }
+      }
+      var array1 {
+         assign =   [1 {
+         2 {
+         3 {
+         4 {
+         5] \r\n {
+         }
+      }
+      var array2 {
+         assign =   ['a' {
+         'b' {
+         'c'] \r\n {
+         }
+      }
+      var array3 {
+         assign =   [1.6 {
+         2.7 {
+         3.8 {
+         4.9 {
+         5.0] \r\n \r\n {
+         }
+      }
+      var var1 {
+         assign =   10 \r\n {
+         }
+      }
+      var var2 {
+         assign = {
+            operation {
+               var var1 {
+               }
+            / 2   +   5 {
+            }
+         \r\n {
+         }
+      }
+      var var3 {
+         assign = {
+            operation {
+               var var2 {
+               }
+            %   2 {
+            }
+         \r\n {
+         }
+      }
+      var var4 {
+         assign =   1 \r\n \r\n {
+         }
+      }
+      var flag {
+         assign =   True \r\n \r\n {
+         }
+      }
+      var assign1 {
+         assign =   "" \r\n \r\n {
+         }
+      }
+      branch if {
+         comparison {
+            var var1 {
+            }
+         > {
+            comparison {
+               var var2 {
+               }
+            }
+         }
+      : \r\n {
+         branchstatement \t {
+            var arith_op1 {
+               assign = {
+                  operation 1   +   2 {
+                  }
+               \r\n {
+               }
+            }
+         }
+         branchstatement \t {
+            var assign1 {
+               assign =   "text data" \r\n \r\n {
+               }
+            }
+         }
+         branch if {
+            comparison {
+               var var1 {
+               }
+            <= {
+               comparison {
+                  var var2 {
+                  }
+               and {
+                  comparison {
+                     var var3 {
+                     }
+                  == {
+                     comparison {
+                        var var4 {
+                        }
                      }
                   }
                }
-               s {
-                  var arith_op1 {
+            }
+         : \r\n {
+            branchstatement \t {
+               var arith_op1 {
+                  assign = {
+                     operation 1   +   2 {
+                     }
+                  \r\n {
+                  }
+               }
+            }
+            branchstatement \t {
+               var assign1 {
+                  assign =   "text data" \r\n {
+                  }
+               }
+            }
+            branch else : \r\n {
+               branchstatement \t {
+                  var arith_op4 {
                      assign = {
-                        operation 1   +   2 {
+                        operation 4.2   *   10 {
                         }
                      \r\n {
                      }
                   }
-                  s {
-                     var arith_op2 {
-                        assign = {
-                           operation 13   -   3 {
-                           }
-                        \r\n {
+               }
+               branchstatement \t {
+                  var arith_op3 {
+                     assign * = {
+                        var arith_op4 \r\n {
                         }
                      }
-                     s {
-                        var arith_op3 {
-                           assign = {
-                              operation 10   / {
-                                 var arith_op1 \r\n {
-                                 }
-                              }
-                           }
-                        }
-                        s {
-                           var arith_op4 {
-                              assign = {
-                                 operation 4.2   *   10 {
-                                 }
-                              \r\n {
-                              }
-                           }
-                           s {
-                              var arith_op5 {
-                                 assign = {
-                                    operation {
-                                       var arith_op1 {
-                                       }
-                                    % {
-                                       var arith_op2 \r\n \r\n {
-                                       }
-                                    }
-                                 }
-                              }
-                              s {
-                                 var arith_op1 {
-                                    assign + = {
-                                       var arith_op2 \r\n {
-                                       }
-                                    }
-                                 }
-                                 s {
-                                    var arith_op2 {
-                                       assign - = {
-                                          var arith_op3 \r\n {
-                                          }
-                                       }
-                                    }
-                                    s {
-                                       var arith_op3 {
-                                          assign * = {
-                                             var arith_op4 \r\n {
-                                             }
-                                          }
-                                       }
-                                       s {
-                                          var arith_op4 {
-                                             assign / = {
-                                                var arith_op5 \r\n \r\n {
-                                                }
-                                             }
-                                          }
-                                          s {
-                                             var array1 {
-                                                assign =   [1 {
-                                                2 {
-                                                3 {
-                                                4 {
-                                                5] \r\n {
-                                                }
-                                             }
-                                             s {
-                                                var array2 {
-                                                   assign =   ['a' {
-                                                   'b' {
-                                                   'c'] \r\n {
-                                                   }
-                                                }
-                                                s {
-                                                   var array3 {
-                                                      assign =   [1.6 {
-                                                      2.7 {
-                                                      3.8 {
-                                                      4.9 {
-                                                      5.0] \r\n \r\n {
-                                                      }
-                                                   }
-                                                   s {
-                                                      var var1 {
-                                                         assign =   10 \r\n {
-                                                         }
-                                                      }
-                                                      s {
-                                                         var var2 {
-                                                            assign = {
-                                                               operation {
-                                                                  var var1 {
-                                                                  }
-                                                               / 2   +   5 {
-                                                               }
-                                                            \r\n {
-                                                            }
-                                                         }
-                                                         s {
-                                                            var var3 {
-                                                               assign = {
-                                                                  operation {
-                                                                     var var2 {
-                                                                     }
-                                                                  %   2 {
-                                                                  }
-                                                               \r\n {
-                                                               }
-                                                            }
-                                                            s {
-                                                               var var4 {
-                                                                  assign =   1 \r\n \r\n {
-                                                                  }
-                                                               }
-                                                               s {
-                                                                  var flag {
-                                                                     assign =   True \r\n \r\n {
-                                                                     }
-                                                                  }
-                                                                  s {
-                                                                     var assign1 {
-                                                                        assign =   "" \r\n \r\n {
-                                                                        }
-                                                                     }
-                                                                     s {
-                                                                        branch if {
-                                                                           comparison {
-                                                                              var var1 {
-                                                                              }
-                                                                           > {
-                                                                              comparison {
-                                                                                 var var2 {
-                                                                                 }
-                                                                              }
-                                                                           }
-                                                                        : \r\n {
-                                                                           branchstatement \t {
-                                                                              var arith_op1 {
-                                                                                 assign = {
-                                                                                    operation 1   +   2 {
-                                                                                    }
-                                                                                 \r\n {
-                                                                                 }
-                                                                              }
-                                                                           }
-                                                                           branchstatement \t {
-                                                                              var assign1 {
-                                                                                 assign =   "text data" \r\n \r\n {
-                                                                                 }
-                                                                              }
-                                                                           }
-                                                                           branch if {
-                                                                              comparison {
-                                                                                 var var1 {
-                                                                                 }
-                                                                              <= {
-                                                                                 comparison {
-                                                                                    var var2 {
-                                                                                    }
-                                                                                 and {
-                                                                                    comparison {
-                                                                                       var var3 {
-                                                                                       }
-                                                                                    == {
-                                                                                       comparison {
-                                                                                          var var4 {
-                                                                                          }
-                                                                                       }
-                                                                                    }
-                                                                                 }
-                                                                              }
-                                                                           : \r\n {
-                                                                              branchstatement \t {
-                                                                                 var arith_op1 {
-                                                                                    assign = {
-                                                                                       operation 1   +   2 {
-                                                                                       }
-                                                                                    \r\n {
-                                                                                    }
-                                                                                 }
-                                                                              }
-                                                                              branchstatement \t {
-                                                                                 var assign1 {
-                                                                                    assign =   "text data" \r\n {
-                                                                                    }
-                                                                                 }
-                                                                              }
-                                                                              branch else : \r\n {
-                                                                                 branchstatement \t {
-                                                                                    var arith_op4 {
-                                                                                       assign = {
-                                                                                          operation 4.2   *   10 {
-                                                                                          }
-                                                                                       \r\n {
-                                                                                       }
-                                                                                    }
-                                                                                 }
-                                                                                 branchstatement \t {
-                                                                                    var arith_op3 {
-                                                                                       assign * = {
-                                                                                          var arith_op4 \r\n {
-                                                                                          }
-                                                                                       }
-                                                                                    }
-                                                                                 }
-                                                                                 branchstatement \t \r\n {
-                                                                                 }
-                                                                              }
-                                                                           }
-                                                                        }
-                                                                        s {
-                                                                           var data {
-                                                                              assign =   0 \r\n \r\n {
-                                                                              }
-                                                                           }
-                                                                           s {
-                                                                              branch if {
-                                                                                 comparison {
-                                                                                    var var1 {
-                                                                                    }
-                                                                                 != {
-                                                                                    comparison {
-                                                                                       var var2 {
-                                                                                       }
-                                                                                    or {
-                                                                                       comparison {
-                                                                                          var var3 {
-                                                                                          }
-                                                                                       >= {
-                                                                                          comparison {
-                                                                                             var var4 {
-                                                                                             }
-                                                                                          }
-                                                                                       }
-                                                                                    }
-                                                                                 }
-                                                                              : \r\n {
-                                                                                 branchstatement \t {
-                                                                                    var flag {
-                                                                                       assign =   True \r\n {
-                                                                                       }
-                                                                                    }
-                                                                                 }
-                                                                                 branch elif {
-                                                                                    comparison {
-                                                                                          comparison not {
-                                                                                             var flag {
-                                                                                             }
-                                                                                          }
-                                                                                       }
-                                                                                    and {
-                                                                                       comparison {
-                                                                                          var var3 {
-                                                                                          }
-                                                                                       > {
-                                                                                          comparison   10 {
-                                                                                          }
-                                                                                       }
-                                                                                    }
-                                                                                 : \r\n {
-                                                                                    branchstatement \t {
-                                                                                       var flag {
-                                                                                          assign =   False \r\n {
-                                                                                          }
-                                                                                       }
-                                                                                    }
-                                                                                    branch else : \r\n {
-                                                                                       branchstatement \t {
-                                                                                          var data {
-                                                                                             assign =   -1 {
-                                                                                             }
-                                                                                          }
-                                                                                       }
-                                                                                    }
-                                                                                 }
-                                                                              }
-                                                                              s <EOF> {
-                                                                              }
-                                                                           }
-                                                                        }
-                                                                     }
-                                                                  }
-                                                               }
-                                                            }
-                                                         }
-                                                      }
-                                                   }
-                                                }
-                                             }
-                                          }
-                                       }
-                                    }
-                                 }
-                              }
-                           }
-                        }
+                  }
+               }
+               branchstatement \t \r\n {
+               }
+            }
+         }
+      }
+      var data {
+         assign =   0 \r\n \r\n {
+         }
+      }
+      branch if {
+         comparison {
+            var var1 {
+            }
+         != {
+            comparison {
+               var var2 {
+               }
+            or {
+               comparison {
+                  var var3 {
+                  }
+               >= {
+                  comparison {
+                     var var4 {
+                     }
+                  }
+               }
+            }
+         }
+      : \r\n {
+         branchstatement \t {
+            var flag {
+               assign =   True \r\n {
+               }
+            }
+         }
+         branch elif {
+            comparison {
+                  comparison not {
+                     var flag {
+                     }
+                  }
+               }
+            and {
+               comparison {
+                  var var3 {
+                  }
+               > {
+                  comparison   10 {
+                  }
+               }
+            }
+         : \r\n {
+            branchstatement \t {
+               var flag {
+                  assign =   False \r\n {
+                  }
+               }
+            }
+            branch else : \r\n {
+               branchstatement \t {
+                  var data {
+                     assign =   -1 {
                      }
                   }
                }
             }
          }
       }
+   <EOF> {
    }
 }

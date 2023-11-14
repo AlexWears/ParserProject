@@ -57,11 +57,13 @@ def main(argv):
     tree = parser.s()
     print("Number of Errors: " + str(parser.getNumberOfSyntaxErrors()))
     formatted_tree = print_tree(parse_nested(tree.toStringTree(recog=parser)), 0)
-    print(formatted_tree)
 
     with open("parseTree.txt", "w") as f:
         f.write("-- Parse tree for file " + sys.argv[1] + " --\n\n")
         f.write(formatted_tree)
+
+    print("A tree should have been printed in the file 'parseTree.txt.\nThe tree string will be printed here as well.")
+    print("\n" + tree.toStringTree(recog=parser))
 
 if __name__ == '__main__':
     main(sys.argv)

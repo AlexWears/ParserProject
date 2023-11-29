@@ -1,5 +1,10 @@
 grammar python;
-s               : (branch | var)* EOF
+
+s               : (branch | var | COMMENT)* EOF
+                ;
+
+COMMENT         : '#' ~( '\r' | '\n' )* NL+
+                | '\'\'\'' .*? '\'\'\'' NL+ 
                 ;
 
 IF              : 'if'
@@ -9,6 +14,12 @@ ELIF            : 'elif'
                 ;
 
 ELSE            : 'else'
+                ;
+
+WHILE           : 'while'
+                ;
+
+FOR             : 'for'
                 ;
 
 NOT             : 'not'
@@ -24,6 +35,9 @@ BOOL            : 'True'
                 | 'False'
                 ;
 
+RANGEFUNC       : 'range' LPAREN WS* (ID | NUMBER) WS* ',' WS* (ID | INT) WS* RPAREN
+                ;
+
 ID              : (LETTER) (LETTER|NUMBER|US)*
                 ;
 
@@ -33,7 +47,7 @@ LITERAL         : STRING
                 | BOOL
                 ;
 
-INT             : '0'..'9'+
+INT             : '-'? ('0'..'9')+
                 ;
 
 NUMBER          : '-'? INT '.'? INT?
@@ -43,7 +57,7 @@ LETTER          : LOWERCASE
                 | UPPERCASE
                 ;
 
-STRING          : '"' (LETTER|NUMBER|WS)* '"'
+STRING          : '"' ~( '\r' | '\n' )* '"'
                 ;
 
 CHAR            : '\'' LETTER '\''
@@ -59,6 +73,9 @@ ARRAY           : '[' WS* (LITERAL (WS* ',' WS* LITERAL)*) WS* ']'
                 ;
 
 OPSYMBOL        : ('*' | '/' | '+' | '-' | '%')
+                ;
+
+TABS            : '\t'+
                 ;
 
 WS              : ('\t'|' ')+
@@ -87,7 +104,7 @@ COMPAREOP       : '=='
                 | '>='
                 ;
 
-branch          : (((IF|ELIF) WS* comparison) | ELSE) COLON NL branchstatement+ branch?
+branch          : (((IF|ELIF) WS* comparison) | ELSE | WHILE WS* comparison | FOR WS* ID WS* 'in' WS* (ID | RANGEFUNC)) COLON NL (TABS branchstatement | TABS branch)+
                 ;
 
 var             : ID WS* (assign | operation)? NL*
@@ -96,7 +113,7 @@ var             : ID WS* (assign | operation)? NL*
 comparison      : ((LPAREN comparison RPAREN) | ('not'* WS* (var | LITERAL | BOOL))) WS* ((COMPAREOP comparison) | (AND|OR) WS* comparison WS*)?
                 ;
 
-branchstatement : '\t' (var | branch | NL*)
+branchstatement : (var | branch | NL*)
                 ;
 
 assign          : OPSYMBOL? '=' WS* (var | LITERAL | operation | ARRAY | BOOL) assign? NL*
@@ -104,4 +121,3 @@ assign          : OPSYMBOL? '=' WS* (var | LITERAL | operation | ARRAY | BOOL) a
 
 operation       : (LITERAL | var) (WS* OPSYMBOL '='? WS* (LITERAL | var))*
                 ;
-

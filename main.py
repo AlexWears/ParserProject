@@ -5,7 +5,8 @@ from generated_classes import pythonParser
 import re
 
 def parse_nested(text, left=r'[(]', right=r'[)]', sep=r','):
-    """ Code from https://stackoverflow.com/questions/23185540/turn-a-string-with-nested-parenthesis-into-a-nested-list-python
+    """ Code from 
+    https://stackoverflow.com/questions/23185540/turn-a-string-with-nested-parenthesis-into-a-nested-list-python
      by user unutbu """
     pat = r'({}|{}|{})'.format(left, right, sep)
     tokens = re.split(pat, text)    
@@ -59,11 +60,12 @@ def main(argv):
     formatted_tree = print_tree(parse_nested(tree.toStringTree(recog=parser)), 0)
 
     with open("parseTree.txt", "w") as f:
-        f.write("-- Parse tree for file " + sys.argv[1] + " --\n\n")
+        f.write("-- String tree without any formatting -- \n\n")
+        f.write(tree.toStringTree(recog=parser))
+        f.write("\n\n-- Parse tree for file " + sys.argv[1] + " --\n\n")
         f.write(formatted_tree)
 
-    print("A tree should have been printed in the file 'parseTree.txt.\nThe tree string will be printed here as well.")
-    print("\n" + tree.toStringTree(recog=parser))
+    print("A tree and the corrosponding string should have been printed in the file 'parseTree.txt'.")
 
 if __name__ == '__main__':
     main(sys.argv)
